@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="table-responsive">
+    <table class="table table-hover sortable">
+        <thead>
+            <tr>
+                <th style='width:50px;'>#</th>
+                <th>Title</th>
+                <th data-defaultsort="disabled">Encoder preset</th>
+                <th data-defaultsort="disabled">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asset in assets%}
+                <tr>
+                    <td>{{ asset.id }}</td>
+                    <td class='oneliner'>{{ asset["title"] }}</td>
+                    <td>{{ asset["encoder_preset"] }}</td>
+                    <td>{{ {0:"OFFLINE", 1:"ONLINE", 2:"CREATING", 3:"TRASH", 4:"ARCHIVE","-1":"RESET" }[asset["status"]] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

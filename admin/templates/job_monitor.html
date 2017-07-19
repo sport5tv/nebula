@@ -52,6 +52,7 @@
 	            <tr>
 	                <th style='width:50px;'>#</th>
 	                <th>Asset</th>
+                    <th>IDEC</th>
                     <th>Server</th>
                     <th>Agent</th>
                     <th>Service</th>
@@ -78,9 +79,10 @@
 	            	{% endif %}
 
 	                <tr>
-	                    <td>{{ job.id_job }}</td>
-	                    <td class='oneliner'>{{ job.asset_title }}</td>
-	                    <td>{{ job.host }}</td>
+	                    <td title="{{ job.id_job }}">{{ job.id_object }}</td>
+	                    <td class='oneliner'>{{ job.asset_title }}<br><small>{{ job['title/subtitle'] }}</small></td>
+                        <td>{{ job['identifier/main'] }}</td>
+                        <td>{{ job.host }}</td>
                         <td>{{ job.agent }}</td>
                         <td>{{ job.service_title }}({{ job.id_service }})</td>
                         <td>{{ job.action_title }}</td>

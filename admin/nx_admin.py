@@ -149,9 +149,22 @@ def view_jobs(view="", search=""):
         asset = Asset(job_data[1])
         job_data = list(job_data)
         job_data.append(asset["title"])
+        
         job = {}
         for i,c in enumerate(cols):
             job[c] = job_data[i]
+
+        # ADD SOME META
+        #if "title" in asset.meta:
+        #    job["title"] = asset.meta["title"]
+
+        if "title/subtitle" in asset.meta:
+            job["title/subtitle"] = asset.meta["title/subtitle"]
+
+        if "identifier/main" in asset.meta:
+            job["identifier/main"] = asset.meta["identifier/main"]
+
+
         jobs.append(job)
 
     return jobs

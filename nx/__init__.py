@@ -80,3 +80,5 @@ def load_all():
     messaging.configure()
 
 load_all()
+
+from .plugins import *

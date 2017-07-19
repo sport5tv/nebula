@@ -1,6 +1,6 @@
 from nx import *
 
-__all__ = ["plugin_path","PlayoutPlugin"]
+__all__ = ["plugin_path", "PlayoutPlugin", "WorkerPlugin"]
 
 
 try:

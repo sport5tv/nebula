@@ -6,7 +6,7 @@ from .core import *
 
 def cg_download(target_path, method, **kwargs):
     start_time = time.time()
-    target_dir = os.path.dirname(target_path)
+    target_dir = os.path.dirname(os.path.abspath(target_path))
     cg_server = config.get("cg_server", "https://cg.immstudios.org")
     if not os.path.isdir(target_dir):
         try:

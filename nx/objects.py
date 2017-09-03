@@ -447,3 +447,20 @@ def get_next_item(id_item, **kwargs):
         except:
             logging.info("Looping current playlist")
             return current_bin.items[0]
+
+def get_current_event(id_channel=1, **kwargs):
+    db = kwargs.get("db", DB())
+    db.query("""
+        SELECT e.id_object FROM nx_asrun AS r, nx_items AS i, nx_events AS e
+        WHERE
+            r.id_item = i.id_object
+            AND i.id_bin = e.id_magic
+            AND e.id_channel = %s
+        ORDER BY r.start DESC LIMIT 1
+        """, [id_channel]
+        )
+    try:
+        current_event_id = db.fetchall()[0][0]
+    except IndexError:
+        return False
+    return Event(current_event_id, db=db)
